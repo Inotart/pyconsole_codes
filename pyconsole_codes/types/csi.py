@@ -24,7 +24,7 @@ class CSI:
             byte = byte_io.read(1)
             match byte:
                 case b'0'|b'1'|b'2'|b'3'|b'4'|b'5'|b'6'|b'7'|b'8'|b'9':
-                    number.append(byte)
+                    number.append(byte.decode('utf-8'))
                     continue
                 case b';':
                     self.parameters.append(int("".join(number)))
@@ -34,7 +34,12 @@ class CSI:
                     self.isDEC = True
                     continue
                 case _:
+                    if len(number)>0:
+                        self.parameters.append(int("".join(number)))
+                        number=[]
                     self.mode = byte
                     return
     def encode(self)->bytes:
         return b'\x1B['
+    def __str__(self) -> str:
+        return f"CSI(parameters={self.parameters},mode={self.mode},isDEC={self.isDEC})"
