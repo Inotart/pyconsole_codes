@@ -50,6 +50,9 @@ class ESC:
                 a = csi.CSI(is_read_x1B=True,is_read_key1=True)
                 a.decode(byte_io)
                 return a
+    def encode(self)->str:
+        return '\x1B'
+
 class IND:
     "换行."
     def __init__(self,is_read_x1B=False,is_read_d=False):

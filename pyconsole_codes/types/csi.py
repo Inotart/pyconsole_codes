@@ -40,6 +40,13 @@ class CSI:
                     self.mode = byte
                     return
     def encode(self)->bytes:
-        return b'\x1B['
+        text = b'\x1B['
+        if self.isDEC:
+            text+=b'?'
+        for i in self.parameters:
+            text+=str(i).encode('utf-8')+b';'
+        text+=self.mode
+
+        return text
     def __str__(self) -> str:
         return f"CSI(parameters={self.parameters},mode={self.mode},isDEC={self.isDEC})"
