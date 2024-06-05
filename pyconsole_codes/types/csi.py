@@ -44,7 +44,11 @@ class CSI:
         if self.isDEC:
             text+=b'?'
         for i in self.parameters:
-            text+=str(i).encode('utf-8')+b';'
+
+            text+=str(i).encode('utf-8')
+            if i!=self.parameters[-1]:
+                text+=str(i).encode('utf-8')
+                continue
         text+=self.mode
 
         return text
