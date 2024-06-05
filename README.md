@@ -4,10 +4,10 @@ pyconsole_codes 库是一个处理 console_codes 的库, 它提供了一些函�
 
 ## 安装
 
-要安装pyconsole_codes库，请使用pip命令：(暂未上传pypi)
+要安装pyconsole_codes库，请使用pip命令：
 
-# ```
-# pip install pyconsole_codes
-# ```
+ ```
+pip install pyconsole_codes
+```
 
 ## 使用
